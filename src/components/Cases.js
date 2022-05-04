@@ -33,8 +33,7 @@ class Cases extends React.Component {
     }
 
     fetchCountries() {
-        //TODO: use env variable
-        axios.get('http://localhost:5000/countries').then((res) => {
+        axios.get(`${process.env.REACT_APP_BASE_URL}/countries`).then((res) => {
             const countries = res.data.data;
             console.log(countries)
             //create rows from countries

@@ -14,8 +14,7 @@ class DashboardApp extends React.Component {
     }
     //fetch totals
     componentDidMount() {
-      //TODO: change base url to env url
-      axios.get('http://localhost:5000/summary')
+      axios.get(`${process.env.REACT_APP_BASE_URL}/summary`)
       .then((res) => {
         const totals = res.data.data;
         this.setState({ totals });
