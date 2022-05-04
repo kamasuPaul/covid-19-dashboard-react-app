@@ -2,8 +2,27 @@ import { Grid, Container, Typography } from '@mui/material';
 import Page from '../components/Page';
 import AppWidgetSummary from '../components/dashboard/AppWidgetSummary';
 import Cases from '../components/Cases';
+import React from 'react';
+import axios from 'axios';
 
-export default function DashboardApp() {
+class DashboardApp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+          totals:{}
+        };
+    }
+    //fetch totals
+    componentDidMount() {
+      //TODO: change base url to env url
+      axios.get('http://localhost:5000/summary')
+      .then((res) => {
+        const totals = res.data.data;
+        this.setState({ totals });
+      });
+    }
+
+  render() {
   return (
     <Page title="Dashboard">
       <Container maxWidth="xl">
@@ -13,19 +32,19 @@ export default function DashboardApp() {
 
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Total Cases" total={714000} icon={'ant-design:android-filled'} />
+            <AppWidgetSummary title="Total Cases" total={this.state.totals.total_cases} icon={'ant-design:android-filled'} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Total Recovered" total={1352831} color="info" icon={'ant-design:apple-filled'} />
+            <AppWidgetSummary title="Total Recovered" total={this.state.totals.total_recovered} color="info" icon={'ant-design:apple-filled'} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Total Population" total={1723315} color="warning" icon={'ant-design:windows-filled'} />
+            <AppWidgetSummary title="Total Population" total={this.state.totals.total_population} color="warning" icon={'ant-design:windows-filled'} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Total Deaths" total={234} color="error" icon={'ant-design:bug-filled'} />
+            <AppWidgetSummary title="Total Lives Claimed" total={this.state.totals.total_deaths} color="error" icon={'ant-design:bug-filled'} />
           </Grid>
 
 
@@ -37,5 +56,7 @@ export default function DashboardApp() {
       </Container>
     </Page>
   );
+  }
 }
+export default DashboardApp;
 
