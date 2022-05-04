@@ -32,11 +32,11 @@ class DashboardApp extends React.Component {
 
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Total Cases" total={this.state.totals.total_cases} icon={'ant-design:android-filled'} />
+            <AppWidgetSummary title="Total Cases" total={this.state.totals.total_confirmed_cases} icon={'ant-design:android-filled'} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Total Recovered" total={this.state.totals.total_recovered} color="info" icon={'ant-design:apple-filled'} />
+            <AppWidgetSummary title="Total Recovered" total={this.state.totals.total_recovered_cases} color="info" icon={'ant-design:apple-filled'} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
