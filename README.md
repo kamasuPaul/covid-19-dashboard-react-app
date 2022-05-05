@@ -8,6 +8,29 @@ The app gets all the data from a [flask api](https://github.com/kamasuPaul/flask
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### Local Setup
+- Clone the repository
+    - `cd` into the folder
+    - create `.env` file
+    - add baseUrl to the file
+    ```
+    REACT_APP_BASE_URL = 'http://localhost:5000' # <-- add this line
+    ```
+- Install dependencies
+    - `npm install`
+- Run the app
+    - run `npm start`
+
+
+### Features
+- An app that displays a summary of covid cases in the world.
+- Displays total cases, total deaths, and total recovered cases.
+- Displays a table with countries and their respective covid cases.
+
+### Table
+- Displays a table with countries and their respective covid cases.
+
+
 
 ### Available Scripts
 
